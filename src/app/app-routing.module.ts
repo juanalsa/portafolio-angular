@@ -9,8 +9,8 @@ import { PortfolioComponent } from './pages/portfolio/portfolio.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'portfolio', component: PortfolioComponent },
   { path: 'portfolio-item', component: PortfolioItemComponent },
+  { path: 'portfolio', component: PortfolioComponent },
   { path: 'about', component: AboutComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },
