@@ -12,22 +12,22 @@
         <p class="rk-footer__text rk-footer__copy "> <span class="ae-u-bold">© </span><span class="ae-u-bolder">{{ anioActual }} ESHOP </span>All Right Reserved.</p>
       </div>
       <div class="ae-grid__item item-lg-4 au-xs-ta-center">
-        <a [href]="pageInfoService.info.facebook" target="_blank" class="rk-social-btn ">
+        <a [href]="pageInfo.facebook" target="_blank" class="rk-social-btn ">
           <svg>
             <use xlink:href="assets/img/symbols.svg#icon-facebook"></use>
           </svg>
         </a>
-        <a [href]="pageInfoService.info.twitter" target="_blank" class="rk-social-btn ">
+        <a [href]="pageInfo.twitter" target="_blank" class="rk-social-btn ">
           <svg>
             <use xlink:href="assets/img/symbols.svg#icon-twitter"></use>
           </svg>
         </a>
-        <a [href]="pageInfoService.info.pinterest" target="_blank" class="rk-social-btn ">
+        <a [href]="pageInfo.pinterest" target="_blank" class="rk-social-btn ">
           <svg>
             <use xlink:href="assets/img/symbols.svg#icon-pinterest"></use>
           </svg>
         </a>
-        <a [href]="pageInfoService.info.tumblr" target="_blank" class="rk-social-btn ">
+        <a [href]="pageInfo.tumblr" target="_blank" class="rk-social-btn ">
           <svg>
             <use xlink:href="assets/img/symbols.svg#icon-tumblr"></use>
           </svg>
@@ -37,7 +37,7 @@
         <p class="rk-footer__text rk-footer__contact "> 
           <span class="ae-u-bold">Email: </span>
           <span class="ae-u-bolder">
-            <a href="mailto:{{pageInfoService.info.email}}" class="rk-dark-color ">{{ pageInfoService.info.email }}</a>
+            <a href="mailto:{{pageInfo.email}}" class="rk-dark-color ">{{ pageInfo.email }}</a>
           </span>
         </p>
         <p class="rk-footer__text rk-footer__by">Theme by <a href="http://pixeden.com" class="ae-u-bolder">Pixeden.</a></p>

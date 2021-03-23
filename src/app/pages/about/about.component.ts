@@ -20,7 +20,6 @@ export class AboutComponent implements OnInit {
     this.pageInfoService.getEquipo()
         .subscribe ( team => {
           // console.log(team);
-          
           this.equipo = team;
   
         });

@@ -10,23 +10,27 @@ import { tap } from "rxjs/operators";
 })
 export class PageInfoService {
   info: PageInfo = {};
-  equipo: TeamInfo[] = [];
   cargada: boolean = false;
+  equipo: TeamInfo[] = [];
 
-  constructor( private http: HttpClient ) {
-    this.cargarInfo();
+  constructor( private http: HttpClient ) {}
 
-  }
+  public getPageInfo() {
+    // Cache de Info
+    if ( this.cargada ) {
+      return of(this.info);
 
-  public cargarInfo() {
-    // Leer archivo JSON local
-    this.http.get<PageInfo>('assets/data/data-pagina.json')
-        .subscribe(resp => {
-          // console.log(resp);
-          this.info = resp;
-          this.cargada = true;
-          
-        });
+    } else {
+      // Leer archivo JSON local
+      return this.http.get<PageInfo>('assets/data/data-pagina.json')
+          .pipe( tap( resp => {
+            this.info = resp;
+            this.cargada = true;
+
+          }));
+      
+    }
+
   }
 
   public getEquipo() {
