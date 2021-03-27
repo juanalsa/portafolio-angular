@@ -4,3 +4,7 @@ svg path,
 svg rect{
   fill: black;
 }
+
+.link {
+  cursor: pointer;
+}

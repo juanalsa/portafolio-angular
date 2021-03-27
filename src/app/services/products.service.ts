@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+import { ProductDetail } from '../interfaces/product-detail';
 import { ProductInfo } from '../interfaces/product-info';
 
 @Injectable({
@@ -10,6 +11,8 @@ import { ProductInfo } from '../interfaces/product-info';
 export class ProductsService {
   cargando: boolean = true;
   products: ProductInfo[] = [];
+  filteredProducts: ProductInfo[] = [];
+  private urlPortfolio:string = 'https://angular-portfolio-5744a-default-rtdb.firebaseio.com'
 
   constructor( private http: HttpClient ) {}
 
@@ -21,7 +24,7 @@ export class ProductsService {
       return of(this.products);
       
     } else {
-      return this.http.get<ProductInfo[]>('https://angular-portfolio-5744a-default-rtdb.firebaseio.com/productos_idx.json')
+      return this.http.get<ProductInfo[]>(`${ this.urlPortfolio }/productos_idx.json`)
                  .pipe( tap( resp => {
                   this.cargando = false; 
                   this.products = resp;
@@ -30,6 +33,42 @@ export class ProductsService {
       
     }
 
+  }
+
+  getProducto( productID: string ): Observable<ProductDetail> {
+    return this.http.get<ProductDetail>(`${ this.urlPortfolio }/productos/${ productID }.json`);
 
   }
+
+  buscarProducto ( termino: string ): Observable<ProductInfo[]> {
+    termino = termino.toLowerCase();
+
+    if (this.products.length > 0) {
+      this.filteredProducts = this.products.filter( prod => {
+        const tituloLower = prod.titulo.toLowerCase();
+
+        return prod.categoria.indexOf( termino ) >= 0 || tituloLower.indexOf( termino ) >= 0;
+
+      }); 
+
+      return of(this.filteredProducts);
+
+    } else {
+      return this.http.get<ProductInfo[]>(`${ this.urlPortfolio }/productos_idx.json`)
+                 .pipe( map( data => {
+                   this.filteredProducts = data.filter( prod => {
+                    const tituloLower = prod.titulo.toLowerCase();
+
+                    return prod.categoria.indexOf( termino ) >= 0 || tituloLower.indexOf( termino ) >= 0;
+
+                   });
+
+                   return this.filteredProducts;
+                   
+                  }));
+    }
+
+  }
+
+
 }

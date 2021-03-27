@@ -7,6 +7,7 @@ import { AboutComponent } from './about/about.component';
 import { PortfolioItemComponent } from './portfolio-item/portfolio-item.component';
 import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import { ContactComponent } from './contact/contact.component';
     AboutComponent, 
     PortfolioItemComponent, 
     BlogComponent, 
-    ContactComponent
+    ContactComponent, SearchComponent
   ],
   imports: [
     CommonModule,

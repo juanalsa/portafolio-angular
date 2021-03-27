@@ -6,12 +6,14 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PortfolioItemComponent } from './pages/portfolio-item/portfolio-item.component';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
+import { SearchComponent } from './pages/search/search.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'portfolio-item', component: PortfolioItemComponent },
-  { path: 'portfolio', component: PortfolioComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'item/:productID', component: PortfolioItemComponent },
+  { path: 'search/:termino', component: SearchComponent },
+  { path: 'portfolio', component: PortfolioComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }

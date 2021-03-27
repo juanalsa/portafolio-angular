@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PageInfoService } from 'src/app/services/page-info.service';
 import { PageInfo } from '../../interfaces/page-info';
 
@@ -10,7 +11,8 @@ import { PageInfo } from '../../interfaces/page-info';
 export class HeaderComponent implements OnInit {
   pageInfo: PageInfo = {};
 
-  constructor( private pageInfoService: PageInfoService ) { }
+  constructor( private pageInfoService: PageInfoService,
+               private router: Router ) { }
 
   ngOnInit(): void {
     this.cargarPageInfo();
@@ -24,6 +26,18 @@ export class HeaderComponent implements OnInit {
           
           this.pageInfo = pageInfo;
         });
+    
+  }
+
+  buscarProducto( txtValor: string) {
+    if ( txtValor.length < 1 ) {
+      return;
+
+    }
+
+    // console.log(txtValor);
+    this.router.navigate(['/search', txtValor]);
+
   }
 
 }
