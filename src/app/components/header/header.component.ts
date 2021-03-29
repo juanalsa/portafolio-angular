@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { PageInfoService } from 'src/app/services/page-info.service';
 import { PageInfo } from '../../interfaces/page-info';
@@ -10,6 +10,7 @@ import { PageInfo } from '../../interfaces/page-info';
 })
 export class HeaderComponent implements OnInit {
   pageInfo: PageInfo = {};
+  @ViewChild('txtBuscar') txtBuscar: ElementRef;
 
   constructor( private pageInfoService: PageInfoService,
                private router: Router ) { }
@@ -36,6 +37,7 @@ export class HeaderComponent implements OnInit {
     }
 
     // console.log(txtValor);
+    this.txtBuscar.nativeElement.value = '';
     this.router.navigate(['/search', txtValor]);
 
   }

@@ -51,6 +51,8 @@ export class ProductsService {
 
       }); 
 
+      this.cargando = false;
+
       return of(this.filteredProducts);
 
     } else {
@@ -62,6 +64,8 @@ export class ProductsService {
                     return prod.categoria.indexOf( termino ) >= 0 || tituloLower.indexOf( termino ) >= 0;
 
                    });
+                   
+                   this.cargando = false;
 
                    return this.filteredProducts;
                    

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ProductInfo } from 'src/app/interfaces/product-info';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -11,8 +10,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class PortfolioComponent implements OnInit {
   productos: ProductInfo[] = [];
 
-  constructor(public productsService: ProductsService,
-              private router: Router) { }
+  constructor( public productsService: ProductsService ) { }
 
   ngOnInit(): void {
     this.cargarProductos();
@@ -25,11 +23,6 @@ export class PortfolioComponent implements OnInit {
           this.productos = resp;
           
         });
-  }
-
-  cargarItem( productID: string ) {
-    this.router.navigate(['/item', productID]);
-
   }
 
 }

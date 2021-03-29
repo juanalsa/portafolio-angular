@@ -8,6 +8,8 @@ import { PortfolioItemComponent } from './portfolio-item/portfolio-item.componen
 import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
 import { SearchComponent } from './search/search.component';
+import { RouterModule } from '@angular/router';
+import { ProductListComponent } from './product-list/product-list.component';
 
 
 @NgModule({
@@ -17,10 +19,11 @@ import { SearchComponent } from './search/search.component';
     AboutComponent, 
     PortfolioItemComponent, 
     BlogComponent, 
-    ContactComponent, SearchComponent
+    ContactComponent, SearchComponent, ProductListComponent
   ],
   imports: [
     CommonModule,
+    RouterModule
   ]
 })
 export class PagesModule { }
